@@ -6,9 +6,18 @@ import { redirectFromShortUrl } from "./controllers/shortUrl.controller.js"
 import { errorHandler } from "./utils/errorHandler.js"
 import cors from "cors"
 
+
 dotenv.config({})
 
 const app = express()
+
+const allowedOrigin = [
+    'http://localhost:5173',
+]
+app.use(cors({
+    origin: allowedOrigin,
+    credentials: true,
+}))
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
