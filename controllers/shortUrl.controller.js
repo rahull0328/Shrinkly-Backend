@@ -3,6 +3,7 @@ import { createShortUrlWithoutUser, createShortUrlWithUser } from "../services/s
 import wrapAsync from "../utils/tryCatchWrapper.js"
 
 export const createShortUrl = wrapAsync(async (req, res) => {
+    const {url} = req.body
     let shortUrl
     if(req.user) {
         shortUrl = await createShortUrlWithUser(url)
