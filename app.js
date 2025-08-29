@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import connectDB from "./config/mongoose.config.js"
 import urlRoutes from "./routes/shortUrl.routes.js"
+import authRoutes from "./routes/auth.routes.js"
 import { redirectFromShortUrl } from "./controllers/shortUrl.controller.js"
 import { errorHandler } from "./utils/errorHandler.js"
 import cors from "cors"
@@ -22,6 +23,7 @@ app.use(cors({
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
+app.use("/api/auth", authRoutes)
 app.use("/api/url", urlRoutes)
 app.use("/:id", redirectFromShortUrl)
 app.use(errorHandler)
