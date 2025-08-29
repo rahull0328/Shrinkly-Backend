@@ -1,4 +1,4 @@
-import wrapAsync from "../utils/tryCatchWrapper"
+import wrapAsync from "../utils/tryCatchWrapper.js"
 
 export const register = wrapAsync(async(req, res) => {
 
